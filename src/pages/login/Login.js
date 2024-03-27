@@ -70,7 +70,6 @@ export default function Login() {
             </div>
           </div>
         </div>
-        <img className="absolute left-[1130px] top-[355px]" src={People} />
       </div>
     </div>
   );

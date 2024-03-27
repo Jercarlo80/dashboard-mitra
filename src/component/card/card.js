@@ -2,8 +2,14 @@ import React from "react";
 
 export default function Card(props) {
   return (
-    <aside className="w-[77rem] h-[51.563rem] bg-white mt-[1.5rem] rounded-xl shadow-2xl">
-        <h1 className="text-[2rem] pl-[1.875rem] pt-[2.125rem] font-semibold">{props.tag}</h1>
-    </aside>
+    <button className="w-[17.3rem] h-[7.436rem] bg-gradient-to-r from-[#9b59b6] to-[#e74c3c] hover:shadow-2xl rounded-xl">
+      <div className="flex pl-[1.125rem] pt-[0.2rem] gap-6">
+        {props.icon}
+        <div className="flex flex-col justify-start items-start space-y-2 ">
+          <h1 className="text-white text-[1rem] font-medium">{props.tag}</h1>
+          <h2 className="text-white text-[1.5rem] font-bold">{props.data}</h2>
+        </div>
+      </div>
+    </button>
   );
 }
