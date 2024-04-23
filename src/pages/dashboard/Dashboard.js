@@ -9,6 +9,7 @@ import BarChart from "../../component/Chart/BarChart";
 import PieCharts from "../../component/Chart/PieChart";
 
 export default function Dashboard() {
+  const [expanded, setExpanded] = useState(true);
   const [dataNumber, setDataNumber] = useState([]);
   const [userData, setUserData] = useState({
     labels: [],
@@ -79,13 +80,15 @@ export default function Dashboard() {
     },
   ];
   return (
-    <aside className="w-[77rem] h-[51.563rem] bg-white mt-[1.5rem] rounded-xl shadow-2xl z-0">
+    <aside
+      className={`bg-white mt-[1.5rem] rounded-xl shadow-2xl z-0 transition-all mx-auto duration-300 sm:w-[77rem] w-[24rem] sm:h-[51.563rem] h-[43.2rem] sm:overflow-y-hidden overflow-y-auto`}
+    >
       <h1 className="text-[2rem] pl-[1.875rem] pt-[2.125rem] font-semibold">
         Dashboard
       </h1>
-      <div className="flex flex-row">
+      <div className="sm:flex sm:flex-row flex flex-col">
         <div className="flex flex-col">
-          <div className="flex gap-4 pl-[1.875rem] pt-[1.625rem]">
+          <div className="sm:flex sm:flex-row flex flex-col gap-4 pl-[1.875rem] pt-[1.625rem]">
             {cardData.map((card, index) => (
               <Card
                 key={index}
@@ -95,11 +98,11 @@ export default function Dashboard() {
               />
             ))}
           </div>
-          <div className="w-[35.5rem] h-[33.563rem] ml-[1.875rem] mt-[1.875rem] bg-[#EEEEEE] shadow-lg border-2 rounded-xl">
+          <div className="sm:w-[35.5rem] w-[21.2rem] h-[33.563rem] ml-[1.875rem] sm:overflow-x-auto overflow-x-auto over mt-[1.875rem] bg-[#EEEEEE] shadow-lg border-2 rounded-xl">
             <h1 className="ml-[1.475rem] mt-[0.575rem] font-bold">
               Grafik Arus Antrian
             </h1>
-            <div className="ml-[1.975rem] mt-[2rem]">
+            <div className="sm:ml-[1.975rem] sm:mr-0 mr-[2rem] ml-0 sm:mt-[2rem] mt-[1rem]">
               <PieCharts />
             </div>
             <div className="flex flex-col gap-3 ml-[1.875rem] mb-[2rem]">
@@ -115,7 +118,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="flex flex-col space-y-6">
-          <div className="w-[35.5rem] h-[20.563rem] ml-[1.875rem] mt-[1.875rem] bg-[#EEEEEE] shadow-lg border-2 rounded-xl">
+          <div className="sm:w-[35.5rem] w-[21.2rem] h-[20.563rem] sm:overflow-x-auto overflow-x-auto ml-[1.875rem] mt-[1.875rem] bg-[#EEEEEE] shadow-lg border-2 rounded-xl">
             <h1 className="ml-[1.475rem] mt-[0.575rem] font-bold">
               Grafik Pendapatan
             </h1>
@@ -123,7 +126,7 @@ export default function Dashboard() {
               <LineChart chartData={userData} />
             </div>
           </div>
-          <div className="w-[35.5rem] h-[20.563rem] ml-[1.875rem] mt-[1.875rem] bg-[#EEEEEE] shadow-lg border-2 rounded-xl">
+          <div className="sm:w-[35.5rem] w-[21.2rem] h-[20.563rem] sm:overflow-x-auto overflow-x-auto ml-[1.875rem] mt-[1.875rem] bg-[#EEEEEE] shadow-lg border-2 rounded-xl">
             <h1 className="ml-[1.475rem] mt-[0.575rem] font-bold">
               Grafik Pemesanan
             </h1>

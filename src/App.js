@@ -13,7 +13,7 @@ function App() {
         <Route path='/' element={<Login />} />
         <Route path='/login' element={<Login />} />
         <Route path='/dashboard' element={<DashboardRoute/>}/>
-        <Route path='/data-karyawan' element={<KaryawanRoute/>}/>
+        <Route path='/data-akun' element={<KaryawanRoute/>}/>
         <Route path='/data-keuangan' element={<KeuanganRoute/>}/>
         <Route path='/data-menu' element={<MenuRoute/>}/>
         {/* Route untuk halaman 404 */}

@@ -13,6 +13,8 @@ export default function PieCharts() {
         series={[
           {
             data,
+            highlightScope: { faded: "global", highlighted: "item" },
+            faded: { innerRadius: 10, additionalRadius: -30, color: "gray" },
           },
         ]}
         height={400}

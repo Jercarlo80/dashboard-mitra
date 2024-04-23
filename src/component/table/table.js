@@ -50,12 +50,12 @@ export default function Tabel() {
   }
 
   return (
-    <div className="w-[70.5rem] overflow-y-auto overflow-x-auto">
+    <div className="sm:w-[77rem] w-[55rem] overflow-y-auto overflow-x-auto">
       <div className="grid justify-items-stretch mb-3">
-        <div className="flex justify-end">
+        <div className="sm:flex sm:justify-end flex justify-start">
           <div className="flex justify-start">
             <input
-              className="bg-transparent pl-4 border rounded-lg border-black w-[150px] h-[30px] sm:w-[250px] focus:outline-none "
+              className="bg-transparent pl-4 border rounded-lg border-black w-[13.75rem] h-[1.875rem] sm:w-[15.625rem] focus:outline-none "
               type="text"
               placeholder="Masukkan Username"
               onChange={Filter}
@@ -70,18 +70,18 @@ export default function Tabel() {
         </div>
       ) : (
         <table>
-          <thead className="w-[66.5rem] h-[3.5rem] bg-[#F3F3F3]">
+          <thead className="sm:w-[66.5rem] w-[500rem] h-[3.5rem] bg-[#F3F3F3]">
             <tr>
-              <td className="w-[1.5rem] pl-3 border-l-2 border-y-2 border-y-[#E8E8E8]">
+              <td className="sm:w-[1.5rem] w-[1rem] pl-3 border-l-2 border-y-2 border-y-[#E8E8E8]">
                 Profile
               </td>
-              <td className="w-[58.625rem] pl-[2rem] border-y-2 border-[#e8e8e8]">
+              <td className="sm:w-[58.625rem] w-[60rem] pl-[2rem] border-y-2 border-[#e8e8e8]">
                 Username
               </td>
               <td className="w-[50.625rem] border-y-2 border-[#e8e8e8]">
                 Email
               </td>
-              <td className="w-[50.625rem] border-y-2 border-[#e8e8e8]">
+              <td className="sm:w-[50.625rem] w-[60rem] border-y-2 border-[#e8e8e8]">
                 No Handphone
               </td>
               <td className="w-[58.625rem] pl-[2rem] border-y-2 border-[#e8e8e8]">
@@ -90,7 +90,7 @@ export default function Tabel() {
               <td className="w-[50.625rem] border-y-2 border-[#e8e8e8]">
                 Jabatan
               </td>
-              <td className="w-[50.625rem] border-r-2 border-y-2 border-[#e8e8e8]">
+              <td className="sm:w-[50.625rem] w-[65rem] border-r-2 border-y-2 border-[#e8e8e8]">
                 Tanggal Terdaftar
               </td>
             </tr>
@@ -104,22 +104,22 @@ export default function Tabel() {
                 {/* {{id + firstIndex + 1}} */} 1
               </td>
               <td className="w-[18.625rem] h-[3.5rem] pl-[2rem] border-y-2 border-[#e8e8e8]">
-                test
+                username
               </td>
               <td className="w-[18.625rem] h-[3.5rem] border-y-2 border-[#e8e8e8]">
-                test
+                email
               </td>
               <td className="w-[18.625rem] h-[3.5rem] pl-[2rem] border-y-2 border-[#e8e8e8]">
-                test
+                000
               </td>
-              <td className="w-[18.625rem] h-[3.5rem] border-y-2 border-[#e8e8e8]">
-                test
+              <td className="w-[8.625rem] h-[3.5rem] border-y-2 border-[#e8e8e8]">
+                Jalan jalan
               </td>
-              <td className="w-[18.625rem] h-[3.5rem] pl-[2rem] border-y-2 border-[#e8e8e8]">
-                test
+              <td className="w-[18.625rem] h-[3.5rem]  border-y-2 border-[#e8e8e8]">
+                jendral
               </td>
               <td className="w-[18.625rem] h-[3.5rem] border-r-2 border-y-2 border-[#e8e8e8]">
-                test
+                8 Juni 2002
               </td>
             </tr>
             {/* ))} */}
@@ -127,10 +127,10 @@ export default function Tabel() {
         </table>
       )}
 
-      <nav className="z-10">
+      <nav className="">
         <ul className="grid justify-items-stretch mt-5 mb-3 pagination">
-          <div className="justify-self-start">
-            <label className="flex relative top-6">
+          <div className="justify-self-start -z-0">
+            <label className="flex relative top-6 z-0">
               <select
                 className="border border-black rounded-lg cursor-pointer"
                 value={recordPerPage}
@@ -158,13 +158,13 @@ export default function Tabel() {
               )
               .map((number) => (
                 <li
-                  className={`cursor-pointer page-link ${
+                  className={`cursor-pointer page-link z-0 ${
                     currentPage === number ? "active" : ""
                   }`}
                   key={number}
                 >
                   <a
-                    className="hover:border-main-color hover:rounded-xl hover:border-2 hover:w-2 page-item hover:text-center text-[1.1rem] p-2"
+                    className="hover:border-main-color hover:rounded-xl hover:border-2 hover:w-2  page-item hover:text-center text-[1.1rem] p-2"
                     onClick={() => handlePageChange(number)}
                   >
                     {number}
