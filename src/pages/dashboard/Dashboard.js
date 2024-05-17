@@ -6,11 +6,9 @@ import { GrMoney } from "react-icons/gr";
 import { UserData } from "../../data/Data";
 import LineChart from "../../component/Chart/LineChart";
 import BarChart from "../../component/Chart/BarChart";
-import PieCharts from "../../component/Chart/PieChart";
+import PieChart from "../../component/Chart/PieChart";
 
 export default function Dashboard() {
-  const [expanded, setExpanded] = useState(true);
-  const [dataNumber, setDataNumber] = useState([]);
   const [userData, setUserData] = useState({
     labels: [],
     datasets: [
@@ -51,44 +49,66 @@ export default function Dashboard() {
         ],
       });
     }
-  }, [UserData]);
+  }, []);
 
   const Data = ({ n }) => {
     const { number } = useSpring({
       from: { number: 0 },
-      number: 500,
+      number: n,
       delay: 250,
       config: { mass: 1, tension: 20, friction: 10 },
     });
 
     return <animated.div>{number.to((n) => n.toFixed(0))}</animated.div>;
   };
-  const borrowedAssets = dataNumber.filter((asset) => asset.is_borrowed);
-  const borrowedAssetsCount = borrowedAssets.length;
-  const itemCount = dataNumber.length - borrowedAssetsCount;
 
   const cardData = [
     {
       icon: <GrMoney size={50} color="white" />,
-      tag: "Jumlah Pendapatan",
-      data: <Data n={`Rp${itemCount}`} />,
+      tag: "Jumlah Pemasukan",
+      data: <>Rp <Data n={500000} /></>,
     },
     {
       icon: <MdPeopleAlt size={50} color="white" />,
-      tag: "Jumlah Antrian",
-      data: <Data n={itemCount} />,
+      tag: "Jumlah Pengunjung",
+      data: <Data n={300} />,
     },
   ];
+
   return (
     <aside
-      className={`bg-white mt-[1.5rem] rounded-xl shadow-2xl z-0 transition-all mx-auto duration-300 sm:w-[77rem] w-[24rem] sm:h-[51.563rem] h-[43.2rem] sm:overflow-y-hidden overflow-y-auto`}
+      className="
+      bg-white 
+      mt-[1.5rem] 
+      rounded-xl 
+      shadow-2xl 
+      z-0 
+      transition-all 
+      mx-auto 
+      duration-300 
+      sm:w-[77rem] 
+      w-[23.4rem] 
+      sm:h-[51.563rem] 
+      h-[43.2rem] 
+      sm:overflow-y-hidden 
+      overflow-y-auto"
     >
-      <h1 className="text-[2rem] pl-[1.875rem] pt-[2.125rem] font-semibold">
+      <h1 className="text-[2rem] pl-[1.875rem] pt-[1.125rem] pb-[1rem] font-semibold">
         Dashboard
       </h1>
-      <div className="sm:flex sm:flex-row flex flex-col">
-        <div className="flex flex-col">
-          <div className="sm:flex sm:flex-row flex flex-col gap-4 pl-[1.875rem] pt-[1.625rem]">
+      <div className="flex sm:flex flex-col sm:flex-row sm:gap-y-0 gap-y-2">
+        <div className="flex flex-col gap-4 sm:pl-[1.875rem] sm:justify-start justify-center">
+          <div
+            className="
+            sm:flex 
+            sm:flex-row 
+            flex 
+            flex-col 
+            sm:justify-between 
+            justify-center 
+            items-center 
+            gap-3"
+          >
             {cardData.map((card, index) => (
               <Card
                 key={index}
@@ -98,41 +118,35 @@ export default function Dashboard() {
               />
             ))}
           </div>
-          <div className="sm:w-[35.5rem] w-[21.2rem] h-[33.563rem] ml-[1.875rem] sm:overflow-x-auto overflow-x-auto over mt-[1.875rem] bg-[#EEEEEE] shadow-lg border-2 rounded-xl">
-            <h1 className="ml-[1.475rem] mt-[0.575rem] font-bold">
-              Grafik Arus Antrian
-            </h1>
-            <div className="sm:ml-[1.975rem] sm:mr-0 mr-[2rem] ml-0 sm:mt-[2rem] mt-[1rem]">
-              <PieCharts />
-            </div>
-            <div className="flex flex-col gap-3 ml-[1.875rem] mb-[2rem]">
-              <div className="flex flex-row gap-2">
-                <div className="w-[25px] h-[25px] bg-[#4C97F8] rounded-md" />
-                <h1 className="font-normal text-[1rem]">Dine In</h1>
-              </div>
-              <div className="flex flex-row gap-2">
-                <div className="w-[25px] h-[25px] bg-[#4FB0AE] rounded-md" />
-                <h1 className="font-normal text-[1rem]">Take Away</h1>
-              </div>
+          {/* Pie Chart */}
+          <div className="w-full flex justify-center items-center">
+            <div
+              className="
+              sm:flex 
+              sm:flex-col 
+              sm:justify-center 
+              sm:items-center
+              flex-col
+              justify-center
+              items-center
+              bg-gray-200 
+              rounded-xl 
+              p-4 
+              sm:w-[36rem] 
+              w-[21.2rem] 
+              sm:h-[35.7rem] 
+              h-[20rem]"
+            >
+              <PieChart size="sm:w-full sm:h-[130%]" />
             </div>
           </div>
         </div>
-        <div className="flex flex-col space-y-6">
-          <div className="sm:w-[35.5rem] w-[21.2rem] h-[20.563rem] sm:overflow-x-auto overflow-x-auto ml-[1.875rem] mt-[1.875rem] bg-[#EEEEEE] shadow-lg border-2 rounded-xl">
-            <h1 className="ml-[1.475rem] mt-[0.575rem] font-bold">
-              Grafik Pendapatan
-            </h1>
-            <div className="w-[32.5rem] ml-[1.475rem]">
-              <LineChart chartData={userData} />
-            </div>
+        <div className="flex flex-col justify-center items-center w-full sm:gap-y-4 gap-2">
+          <div className="bg-gray-200 rounded-xl p-4 sm:w-[36rem] w-[21.2rem] sm:h-[22rem] h-[15rem]">
+            <LineChart chartData={userData} />
           </div>
-          <div className="sm:w-[35.5rem] w-[21.2rem] h-[20.563rem] sm:overflow-x-auto overflow-x-auto ml-[1.875rem] mt-[1.875rem] bg-[#EEEEEE] shadow-lg border-2 rounded-xl">
-            <h1 className="ml-[1.475rem] mt-[0.575rem] font-bold">
-              Grafik Pemesanan
-            </h1>
-            <div className="w-[32.5rem]  ml-[1.475rem]">
-              <BarChart chartData={userData} />
-            </div>
+          <div className="bg-gray-200 rounded-xl p-4 sm:w-[36rem] w-[21.2rem] sm:h-[21.2rem] h-[13rem]">
+            <BarChart chartData={userData} />
           </div>
         </div>
       </div>

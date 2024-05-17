@@ -1,12 +1,12 @@
 import React from "react";
 import Dashboard from "../../pages/dashboard/Dashboard";
-import Sidebar from "../../component/sidebar/Sidebar";
+import Navigation from "../../component/navigation/Navigation";
 
 export default function DashboardRoute() {
   return (
-    <div className="flex bg-[#F6F5F5] h-full gap-5">
-      <Sidebar/>
-      <div className="w-full">
+    <div className="flex bg-[#F6F5F5] h-full ">
+      <Navigation/>
+      <div className="w-screen">
         <Dashboard />
       </div>
     </div>

@@ -7,7 +7,7 @@ export default function Card(props) {
         {props.icon}
         <div className="flex flex-col justify-start items-start space-y-2 ">
           <h1 className="text-white text-[1rem] font-medium">{props.tag}</h1>
-          <h2 className="text-white text-[1.5rem] font-bold">{props.data}</h2>
+          <h2 className="flex text-white text-[1.5rem] font-bold">{props.data}</h2>
         </div>
       </div>
     </button>

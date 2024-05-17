@@ -1,25 +1,39 @@
-import * as React from "react";
-import { PieChart } from "@mui/x-charts/PieChart";
+// src/components/PieChart.jsx
+import React from "react";
+import { Pie } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
-const data = [
-  { id: 0, value: 10 }, // Tambahkan label untuk setiap data
-  { id: 1, value: 15 },
-];
+// Register chart components
+ChartJS.register(ArcElement, Tooltip, Legend);
 
-export default function PieCharts() {
+export default function PieChart(props) {
+  const data = {
+    
+    labels: ["Dine-In", "Take-Away"],
+    datasets: [
+      {
+        data: [120, 180], // Contoh data, sesuaikan dengan kebutuhan
+        backgroundColor: ["#A252A0", "#E74C4C"],
+        hoverOffset: 4,
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'right',
+      },
+      tooltip: {
+        enabled: true,
+      },
+    },
+  };
+
   return (
-    <div>
-      <PieChart
-        series={[
-          {
-            data,
-            highlightScope: { faded: "global", highlighted: "item" },
-            faded: { innerRadius: 10, additionalRadius: -30, color: "gray" },
-          },
-        ]}
-        height={400}
-        width={600}
-      />
+    <div className={`${props.size}`}>
+      <Pie data={data} options={options} />
     </div>
   );
-}
+};

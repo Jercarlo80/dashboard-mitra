@@ -1,13 +1,13 @@
 import React from "react";
 import Navigation from "../../component/navigation/Navigation";
-import Karyawan from "../../pages/karyawan/Karyawan";
+import Pemasukan from "../../pages/pemasukan/Pemasukan";
 
-export default function KaryawanRoute() {
+export default function pemasukanRoute() {
   return (
     <div className="flex bg-[#F6F5F5] h-full">
       <Navigation/>
       <div className="w-full">
-        <Karyawan />
+        <Pemasukan />
       </div>
     </div>
   );
